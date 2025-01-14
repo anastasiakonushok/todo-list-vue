@@ -1,0 +1,65 @@
+@import '/node_modules/normalize.css/normalize.css';
+
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    background:
+        linear-gradient(330deg,
+            #f0c3fc 0%,
+            #d7befc 21.88%,
+            #bcb1fc 42.19%,
+            #a1aefc 60.94%,
+            #94bdfc 80.73%,
+            #8ec5fc 100%);
+    background-size: cover;
+    font-family: "Inter", serif;
+    background-attachment: fixed;
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    /* Центрирование по вертикали */
+    justify-content: center;
+    /* Центрирование по горизонтали */
+}
+
+.container {
+    max-width: 1440px;
+    margin: 0 auto;
+}
+
+button {
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+input {
+    border: 1px solid #c7ccd1;
+    border-radius: 8px;
+}
+
+.blue-button {
+    border-radius: 8px;
+    padding: 12px 16px;
+    background: #2578f4;
+    font-weight: 600;
+    font-size: 13px;
+    line-height: 123%;
+    color: #fff;
+}
+
+#app {
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    /* Центрирование по вертикали */
+    justify-content: center;
+    /* Центрирование по горизонтали */
+}
