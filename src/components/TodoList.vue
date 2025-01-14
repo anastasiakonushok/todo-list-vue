@@ -1,8 +1,19 @@
 <template>
     <div class="todolist">
         <ul v-if="filteredTodos.length > 0">
-            <li v-for="todo in filteredTodos" :key="todo.id" class="task-list">
+            <li v-for="(todo, index) in filteredTodos" :key="todo.id" class="task-list" @dragover.prevent
+                @drop="onDrop(index)">
                 <div class="task-list__info">
+                    <div class="drag-icon" draggable="true" @dragstart="onDragStart(index)">
+                        <svg width="10" height="13" viewBox="0 0 10 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="1.5" cy="1.5" r="1.5" fill="#202427" />
+                            <circle cx="8.5" cy="11.5" r="1.5" fill="#202427" />
+                            <circle cx="1.5" cy="11.5" r="1.5" fill="#202427" />
+                            <circle cx="8.5" cy="1.5" r="1.5" fill="#202427" />
+                            <circle cx="1.5" cy="6.5" r="1.5" fill="#202427" />
+                            <circle cx="8.5" cy="6.5" r="1.5" fill="#202427" />
+                        </svg>
+                    </div>
                     <input type="checkbox" :checked="todo.completed" @change="toggleTodo(todo.id)" />
                     <span :class="{ completed: todo.completed }">{{ todo.text }}</span>
                 </div>
@@ -53,6 +64,11 @@
 
 <script>
 export default {
+    data() {
+        return {
+            draggedIndex: null,
+        };
+    },
     computed: {
         filteredTodos() {
             return this.$store.getters.filteredTodos;
@@ -76,6 +92,20 @@ export default {
                 this.$store.dispatch('editTodoText', { id, newText });
             }
         },
+        onDragStart(index) {
+            this.draggedIndex = index;
+        },
+        onDrop(index) {
+            const updatedTodos = this.reorderArray(this.$store.state.todos, this.draggedIndex, index);
+            this.$store.commit('setTodos', updatedTodos);
+            this.draggedIndex = null;
+        },
+        reorderArray(array, from, to) {
+            const newArray = [...array];
+            const [movedItem] = newArray.splice(from, 1);
+            newArray.splice(to, 0, movedItem);
+            return newArray;
+        },
     },
 };
 </script>
@@ -85,11 +115,13 @@ export default {
     width: 70%;
     margin: 0 auto;
 }
+
 .task-list__info {
     display: flex;
     align-content: center;
     gap: 8px;
 }
+
 .todolist ul {
     max-height: 85px;
     overflow-y: auto;
@@ -130,15 +162,36 @@ export default {
     align-items: center;
     margin-bottom: 16px;
     gap: 30px;
+    position: relative;
 }
+
+.drag-icon {
+    visibility: hidden;
+    cursor: grab;
+    transition: visibility 0.2s, opacity 0.2s ease-in-out;
+    opacity: 0;
+}
+
+.task-list:hover .drag-icon {
+    visibility: visible;
+    opacity: 1;
+}
+
+
+.drag-icon:active {
+    cursor: grabbing;
+}
+
 
 .task-list__info {
     display: flex;
 }
+
 .task-list__controls {
     display: flex;
     gap: 16px;
 }
+
 .completed {
     text-decoration: line-through;
     color: #888;
