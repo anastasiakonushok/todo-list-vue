@@ -1,5 +1,5 @@
 <template>
-    <div class="controls">
+    <div class="controls wrapp ">
         <button @click="checkAllTodos">Check all</button>
         <button @click="setFilter('all')" :class="{ active: currentFilter === 'all' }">All</button>
         <button @click="setFilter('active')" :class="{ active: currentFilter === 'active' }">Active</button>
@@ -34,7 +34,6 @@ export default {
 <style scoped>
 .controls {
     margin-top: 20px;
-    width: 70%;
     margin: 32px auto 0 auto;
     display: flex;
     align-items: center;

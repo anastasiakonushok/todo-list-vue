@@ -63,3 +63,23 @@ input {
     justify-content: center;
     /* Центрирование по горизонтали */
 }
+.wrapp {
+    width: 70%;
+    margin: 0 auto;
+}
+
+@media (max-width: 800px) { 
+    .box {
+        width: 90%;
+    }
+    .wrapp {
+        width: 100%;
+        margin: 0 auto;
+    }
+    .controls {
+        flex-wrap: wrap;
+    }
+    .controls button {
+        flex: 1 0 auto;
+    }
+}

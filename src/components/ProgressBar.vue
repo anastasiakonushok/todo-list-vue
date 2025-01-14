@@ -1,5 +1,5 @@
 <template>
-  <div class="progress">
+  <div class="progress wrapp ">
     <div class="progress-box progress-box__completed">
       <span>{{ completedCount }} task</span>
       <p>Completed</p>
@@ -31,8 +31,6 @@ export default {
 
 <style scoped>
 .progress {
-  width: 70%;
-  margin: 0 auto;
   display: flex;
   gap: 30px;
 }

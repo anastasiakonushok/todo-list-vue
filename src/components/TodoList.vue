@@ -1,5 +1,5 @@
 <template>
-    <div class="todolist">
+    <div class="todolist wrapp">
         <ul v-if="filteredTodos.length > 0">
             <li v-for="(todo, index) in filteredTodos" :key="todo.id" class="task-list" @dragover.prevent
                 @drop="onDrop(index)">
@@ -87,9 +87,14 @@ export default {
             this.$store.dispatch('deleteTodo', id);
         },
         editTodo(id) {
-            const newText = prompt('Введите новое значение задачи');
-            if (newText) {
-                this.$store.dispatch('editTodoText', { id, newText });
+            const todo = this.$store.state.todos.find(todo => todo.id === id);
+            if (todo) {
+                const newText = prompt('Измените текст задачи:', todo.text);
+                if (newText !== null && newText.trim() !== '') {
+                    this.$store.dispatch('editTodoText', { id, newText: newText.trim() });
+                }
+            } else {
+                console.error('Задача с таким ID не найдена:', id);
             }
         },
         onDragStart(index) {
@@ -111,10 +116,6 @@ export default {
 </script>
 
 <style scoped>
-.todolist {
-    width: 70%;
-    margin: 0 auto;
-}
 
 .task-list__info {
     display: flex;
@@ -195,5 +196,8 @@ export default {
 .completed {
     text-decoration: line-through;
     color: #888;
+}
+input[type='checkbox'] {
+    cursor: pointer;
 }
 </style>

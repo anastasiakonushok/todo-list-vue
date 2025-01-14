@@ -1,5 +1,5 @@
 <template>
-    <div class="todo-input">
+    <div class="todo-input wrapp">
         <input v-model="newTodoText" @keyup.enter="addTodo" placeholder="Add new todo..." />
         <button @click="addTodo" v-if="newTodoText" class="blue-button">Submit</button>
     </div>
@@ -33,8 +33,6 @@ export default {
     align-items: center;
     gap: 10px;
     margin-bottom: 20px;
-    width: 70%;
-    margin: 0 auto 40px auto;
 }
 
 input {
