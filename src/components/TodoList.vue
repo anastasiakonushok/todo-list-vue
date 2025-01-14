@@ -46,7 +46,7 @@
             </li>
         </ul>
         <div v-else class="empty-state">
-            <p>Список задач пуст. Добавьте первую задачу!</p>
+            <p>Congrat, you have no more tasks to do</p>
         </div>
     </div>
 </template>

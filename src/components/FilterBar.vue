@@ -1,11 +1,10 @@
 <template>
     <div class="controls">
-        <button>Check all</button>
-        <button @click="$emit('setFilter', 'all')" :class="{ active: currentFilter === 'all' }">All</button>
-        <button @click="$emit('setFilter', 'active')" :class="{ active: currentFilter === 'active' }">Active</button>
-        <button @click="$emit('setFilter', 'completed')"
-            :class="{ active: currentFilter === 'completed' }">Completed</button>
-        <button @click="$emit('clearCompleted')">Clear completed</button>
+        <button @click="checkAllTodos">Check all</button>
+        <button @click="setFilter('all')" :class="{ active: currentFilter === 'all' }">All</button>
+        <button @click="setFilter('active')" :class="{ active: currentFilter === 'active' }">Active</button>
+        <button @click="setFilter('completed')" :class="{ active: currentFilter === 'completed' }">Completed</button>
+        <button @click="clearCompletedTodos">Clear completed</button>
     </div>
 </template>
 
@@ -17,13 +16,25 @@ export default {
             required: true,
         },
     },
+    methods: {
+        setFilter(filter) {
+            this.$emit('setFilter', filter);
+        },
+        clearCompletedTodos() {
+            this.$store.dispatch('clearCompleted');
+        },
+        checkAllTodos() {
+            this.$store.dispatch('checkAll');
+        },
+    },
 };
 </script>
+
 
 <style scoped>
 .controls {
     margin-top: 20px;
-    width:70%;
+    width: 70%;
     margin: 32px auto 0 auto;
     display: flex;
     align-items: center;

@@ -44,7 +44,7 @@ export default {
       this.$store.commit('setFilter', filter);
     },
     clearCompleted() {
-      this.$store.commit('clearCompleted');
+      this.$store.dispatch('clearCompleted');
     },
   },
   created() {
@@ -56,7 +56,7 @@ export default {
 <style>
 .container {
   max-width: 800px;
-  margin: 0 auto;
+  margin: 40px auto;
   padding: 20px;
 }
 
@@ -65,6 +65,7 @@ export default {
   background: #fff;
   padding: 32px;
   min-width: 60%;
+  width: 70%;
 }
 
 /* Светлая тема */
@@ -89,8 +90,11 @@ export default {
 }
 
 .empty-state {
+  margin-bottom: 20px;
   text-align: center;
-  margin-top: 20px;
-  color: #888;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 114%;
+  color: #8f99a3;
 }
 </style>
