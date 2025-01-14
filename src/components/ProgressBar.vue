@@ -53,12 +53,13 @@ export default {
 }
 
 .progress-box span {
+  display: block;
   font-weight: 600;
   font-size: 12px;
   line-height: 133%;
   color: #202427;
   opacity: 0.5;
-  margin-bottom: 8px;
+  margin-bottom: 4px;
 }
 
 

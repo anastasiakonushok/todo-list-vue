@@ -85,7 +85,11 @@ export default {
     width: 70%;
     margin: 0 auto;
 }
-
+.task-list__info {
+    display: flex;
+    align-content: center;
+    gap: 8px;
+}
 .todolist ul {
     max-height: 85px;
     overflow-y: auto;
@@ -125,6 +129,7 @@ export default {
     justify-content: space-between;
     align-items: center;
     margin-bottom: 16px;
+    gap: 30px;
 }
 
 .task-list__info {
