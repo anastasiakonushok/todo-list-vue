@@ -48,10 +48,14 @@ h1 {
     letter-spacing: -0.02em;
     color: #202427;
 }
+.dark-theme h1 {
+    color: var(--white-color);
+}
 
 .change-button {
     position: absolute;
     top: 0px;
     right: 0px;
+    color: #3333;
 }
 </style>

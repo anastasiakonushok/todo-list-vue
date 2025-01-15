@@ -46,6 +46,7 @@ button {
     font-weight: 600;
     font-size: 13px;
     line-height: 123%;
+    color: #333;
 }
 
 button.active {

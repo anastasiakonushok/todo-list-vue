@@ -62,27 +62,16 @@ export default {
 
 .box {
   border-radius: 24px;
-  background: #fff;
+  background: var(--white-color);
   padding: 32px;
   min-width: 60%;
   width: 70%;
 }
 
-/* Светлая тема */
-.light-theme {
-  --background-color: #ffffff;
-  --text-color: #000000;
-}
-
-/* Темная тема */
-.dark-theme {
-  --background-color: #333333;
-  --text-color: #ffffff;
-}
 
 .dark-theme.box {
   background: #333333;
-  color: #fff;
+  color: var(--white-color);
 }
 
 .controls {

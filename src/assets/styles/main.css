@@ -1,3 +1,7 @@
+:root {
+    --white-color:#fff;
+}
+
 @import '/node_modules/normalize.css/normalize.css';
 
 * {
@@ -63,22 +67,53 @@ input {
     justify-content: center;
     /* Центрирование по горизонтали */
 }
+
 .wrapp {
     width: 70%;
     margin: 0 auto;
 }
-
-@media (max-width: 800px) { 
+.dark-theme .change-button{
+    color:var(--white-color);
+}
+.dark-theme .todolist ul li span{
+    color:var(--white-color)
+}
+.dark-theme .todo-input input {
+    background:#333;
+    color:var(--white-color);
+}
+.dark-theme .task-list__info .completed{
+    color:#ffffff6d;
+}
+.dark-theme .progress-box {
+    background: rgb(255 255 255 / 16%);
+}
+.dark-theme .progress-box span{
+    color:var(--white-color)
+}
+.dark-theme .progress-box p{
+    color:var(--white-color)
+}
+.dark-theme .controls button {
+    color:var(--white-color);
+}
+.dark-theme .edit svg path {
+    fill:#fff;
+}
+@media (max-width: 800px) {
     .box {
         width: 90%;
     }
+
     .wrapp {
         width: 100%;
         margin: 0 auto;
     }
+
     .controls {
         flex-wrap: wrap;
     }
+
     .controls button {
         flex: 1 0 auto;
     }

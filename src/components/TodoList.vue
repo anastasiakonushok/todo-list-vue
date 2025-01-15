@@ -2,9 +2,9 @@
     <div class="todolist wrapp">
         <ul v-if="filteredTodos.length > 0">
             <li v-for="(todo, index) in filteredTodos" :key="todo.id" class="task-list" @dragover.prevent
-                @drop="onDrop(index)">
+                @drop="onDrop(index)" draggable="true" @dragstart="onDragStart(index)">
                 <div class="task-list__info">
-                    <div class="drag-icon" draggable="true" @dragstart="onDragStart(index)">
+                    <div class="drag-icon">
                         <svg width="10" height="13" viewBox="0 0 10 13" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <circle cx="1.5" cy="1.5" r="1.5" fill="#202427" />
                             <circle cx="8.5" cy="11.5" r="1.5" fill="#202427" />
@@ -18,7 +18,7 @@
                     <span :class="{ completed: todo.completed }">{{ todo.text }}</span>
                 </div>
                 <div class="task-list__controls">
-                    <button @click="editTodo(todo.id)"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"
+                    <button @click="editTodo(todo.id)" class="edit"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"
                             xmlns="http://www.w3.org/2000/svg">
                             <g opacity="0.65" clip-path="url(#clip0_20_1415)">
                                 <path
@@ -37,7 +37,7 @@
                                 </clipPath>
                             </defs>
                         </svg></button>
-                    <button @click="deleteTodo(todo.id)"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"
+                    <button @click="deleteTodo(todo.id)" class="delete"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"
                             xmlns="http://www.w3.org/2000/svg">
                             <g clip-path="url(#clip0_20_1419)">
                                 <path
@@ -116,7 +116,6 @@ export default {
 </script>
 
 <style scoped>
-
 .task-list__info {
     display: flex;
     align-content: center;
@@ -130,7 +129,7 @@ export default {
     /* Для Firefox */
     scrollbar-color: #ccc transparent;
     margin-bottom: 32px;
-    /* Цвет для ползунка и фона */
+    padding-right: 10px;
 }
 
 /* Для Chrome, Edge и Safari */
@@ -188,15 +187,22 @@ export default {
     display: flex;
 }
 
+.task-list__info span {
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 114%;
+    color: #202427;
+}
+
 .task-list__controls {
     display: flex;
     gap: 16px;
 }
 
-.completed {
-    text-decoration: line-through;
-    color: #888;
+.task-list__info .completed {
+    color: #20242770;
 }
+
 input[type='checkbox'] {
     cursor: pointer;
 }
