@@ -7,7 +7,7 @@
       <ProgressBar />
       <Filters :currentFilter="filter" @setFilter="setFilter" @clearCompleted="clearCompleted" />
     </div>
-    <div v-else class="empty-state">
+    <div v-else class="empty-state message">
       <p>Congrat, you have no more tasks to do</p>
     </div>
   </div>
@@ -65,7 +65,9 @@ export default {
   background: var(--white-color);
   padding: 32px;
   min-width: 60%;
-  width: 70%;
+  min-height: 600px;
+  width: 65%;
+  position: relative;
 }
 
 
@@ -85,5 +87,11 @@ export default {
   font-size: 14px;
   line-height: 114%;
   color: #8f99a3;
+}
+.message {
+  position: absolute;
+  width: 100%;
+  bottom: 20px;
+  left: 0;
 }
 </style>

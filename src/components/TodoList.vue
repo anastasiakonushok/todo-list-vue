@@ -57,7 +57,7 @@
             </li>
         </ul>
         <div v-else class="empty-state">
-            <p>Congrat, you have no more tasks to do</p>
+            <p>No completed tasks yet. Keep going!</p>
         </div>
     </div>
 </template>
